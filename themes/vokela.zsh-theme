@@ -1,69 +1,31 @@
-PYENV_PROMPT_DEFAULT_VERSION=${PYENV_PROMPT_DEFAULT_VERSION:="system"}
+export VIRTUAL_ENV_DISABLE_PROMPT=1
 
-function _virtualenv_prompt_info {
-    if [[ -n "$(whence virtualenv_prompt_info)" ]]; then
-        if [ -n "$(whence pyenv_prompt_info)" ]; then
-            if [ "$1" = "inline" ]; then
-                ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX=%{$fg[blue]%}"::%{$fg[red]%}"
-                ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX=""
-                virtualenv_prompt_info
-            fi
-            [ "$(pyenv_prompt_info)" = "${PYENV_PROMPT_DEFAULT_VERSION}" ] && virtualenv_prompt_info
+function virtualenv_prompt_info() {
+    if [ -n "$VIRTUAL_ENV" ]; then
+        if [ -f "$VIRTUAL_ENV/__name__" ]; then
+            local name=`cat $VIRTUAL_ENV/__name__`
+        elif [ `basename $VIRTUAL_ENV` = "__" ]; then
+            local name=$(basename $(dirname $VIRTUAL_ENV))
         else
-            virtualenv_prompt_info
+            local name=$(basename $VIRTUAL_ENV)
         fi
+        echo "$ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX$name$ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX"
     fi
 }
 
-function _git_prompt_info {
-    [[ -n $(whence git_prompt_info) ]] && git_prompt_info
-}
-
-function _hg_prompt_info {
-    [[ -n $(whence hg_prompt_info) ]] && hg_prompt_info
-}
-
-function _pyenv_prompt_info {
-    if [ -n "$(whence pyenv_prompt_info)" ]; then
-        local _prompt_info="$(pyenv_prompt_info)"
-        if [ -n "$_prompt_info" ] && [ "$_prompt_info" != "${PYENV_PROMPT_DEFAULT_VERSION}" ]; then
-            echo "${ZSH_THEME_PYENV_PROMPT_PREFIX}$(pyenv_prompt_info)$(_virtualenv_prompt_info inline)${ZSH_THEME_PYENV_PROMPT_SUFFIX}"
-        fi
-    fi
-}
-
-function _docker_prompt_info {
-    if [[ -z "${DOCKER_PROMPT_INFO}" ]] && [[ -n "${DOCKER_HOST}" ]]; then
-        DOCKER_PROMPT_INFO=${DOCKER_HOST/tcp:\/\//}
-    fi
-    [[ -n "${DOCKER_PROMPT_INFO}" ]] && \
-        echo "${ZSH_THEME_DOCKER_PROMPT_PREFIX}${DOCKER_PROMPT_INFO}${ZSH_THEME_DOCKER_PROMPT_SUFFIX}"
-}
-
-function _get_pwd_prompt_info(){
-  git_root=$PWD
-  while [[ $git_root != / && ! -e $git_root/.git ]]; do
-    git_root=$git_root:h
-  done
-  if [[ $git_root = / ]]; then
-    unset git_root
-    prompt_short_dir=%~
-  else
-    parent=${git_root%\/*}
-    prompt_short_dir=${PWD#$parent/}
+function rbenv_ruby_prompt {
+  local ruby_version=$(cat ~/.rbenv/version)
+  if [ -n "$ruby_version" ]; then
+    echo "$ZSH_THEME_RBENV_PROMPT_PREFIX$ruby_version$ZSH_THEME_RBENV_PROMPT_SUFFIX"
   fi
-  echo $prompt_short_dir
 }
 
-PROMPT='╭ %{$fg_bold[red]%}➜ %{$fg_bold[green]%}%n@%m:%{$fg[cyan]%}% $(_get_pwd_prompt_info) %{$fg_bold[blue]%}$(_virtualenv_prompt_info)$(_pyenv_prompt_info)$(_docker_prompt_info)$(_git_prompt_info)$(_hg_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}
+PROMPT='╭ %{$fg_bold[red]%}➜ %{$fg_bold[green]%}%n@%m:%{$fg[cyan]%}%{$fg_bold[blue]%}$(virtualenv_prompt_info)$(rbenv_ruby_prompt)$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}
 ╰ ➤ '
 
-ZSH_THEME_HG_PROMPT_PREFIX="hg:‹%{$fg[red]%}"
-ZSH_THEME_HG_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_HG_PROMPT_DIRTY="%{$fg[blue]%}› %{$fg[yellow]%}✗%{$reset_color%}"
-ZSH_THEME_HG_PROMPT_CLEAN="%{$fg[blue]%}›"
+export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color [(y)es (n)o (a)bort (e)dit]? "
 
-ZSH_THEME_GIT_PROMPT_PREFIX="git:‹%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX=" git:‹%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}› %{$fg[yellow]%}✗%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%}›"
@@ -71,8 +33,8 @@ ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%}›"
 ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX="venv:‹%{$fg[red]%}"
 ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX="%{$fg[blue]%}› "
 
+ZSH_THEME_RBENV_PROMPT_PREFIX="rbenv:‹%{$fg[red]%}"
+ZSH_THEME_RBENV_PROMPT_SUFFIX="%{$fg[blue]%}› "
+
 ZSH_THEME_PYENV_PROMPT_PREFIX="python:‹%{$fg[red]%}"
 ZSH_THEME_PYENV_PROMPT_SUFFIX="%{$fg[blue]%}› "
-
-ZSH_THEME_DOCKER_PROMPT_PREFIX="docker:‹%{$fg[red]%}"
-ZSH_THEME_DOCKER_PROMPT_SUFFIX="%{$fg[blue]%}› "
