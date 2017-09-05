@@ -20,7 +20,7 @@ function rbenv_ruby_prompt {
   fi
 }
 
-function _pwd_prompt_info(){
+function pwd_prompt_info(){
   git_root=$PWD
   while [[ $git_root != / && ! -e $git_root/.git ]]; do
     git_root=$git_root:h
