@@ -20,7 +20,19 @@ function rbenv_ruby_prompt {
   fi
 }
 
-PROMPT='╭ %{$fg_bold[red]%}➜ %{$fg_bold[green]%}%n@%m:%{$fg[cyan]%}%{$fg_bold[blue]%}$(virtualenv_prompt_info)$(rbenv_ruby_prompt)$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}
+function _pwd_prompt_info(){
+  git_root=$PWD
+  while [[ $git_root != / && ! -e $git_root/.git ]]; do
+    git_root=$git_root:h
+  done
+  if [[ $git_root = / ]]; then
+    unset git_root
+    prompt_short_dir=%~
+  else
+    parent=${git_root%\/*}
+    prompt_short_dir=${PWD#$parent/}
+
+PROMPT='╭ %{$fg_bold[red]%}➜ %{$fg_bold[green]%}%n@%m:%{$fg[cyan]%} $(pwd_prompt_info) %{$fg_bold[blue]%}$(virtualenv_prompt_info)$(rbenv_ruby_prompt)$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}
 ╰ ➤ '
 
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color [(y)es (n)o (a)bort (e)dit]? "
