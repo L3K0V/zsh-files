@@ -31,6 +31,9 @@ function pwd_prompt_info(){
   else
     parent=${git_root%\/*}
     prompt_short_dir=${PWD#$parent/}
+  fi
+  echo $prompt_short_dir
+}
 
 PROMPT='╭ %{$fg_bold[red]%}➜ %{$fg_bold[green]%}%n@%m:%{$fg[cyan]%} $(pwd_prompt_info) %{$fg_bold[blue]%}$(virtualenv_prompt_info)$(rbenv_ruby_prompt)$(git_prompt_info)%{$fg_bold[blue]%} % %{$reset_color%}
 ╰ ➤ '
