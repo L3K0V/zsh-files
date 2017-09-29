@@ -1,12 +1,12 @@
 
-function zssh() {
+zssh() {
   ssh "$@" -t zsh
 }
 
-function hgrep () {
+hgrep () {
     history | egrep --color=auto --recursive "$@" | egrep --color=auto --recursive -v "hgrep $@"
 }
 
-function keyhash() {
+keyhash() {
   keytool -exportcert -alias $2 -keystore $1 | openssl sha1 -binary | openssl base64
 }

@@ -47,6 +47,8 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 # (useful when executing time-consuming commands)
 alias badge="tput bel"
 
+alias zshreload="antigen reset && exec /usr/local/bin/zsh -i"
+
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
 alias stfu="osascript -e 'set volume output muted true'"
 alias pumpitup="osascript -e 'set volume output volume 75'"
