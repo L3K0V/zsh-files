@@ -6,6 +6,8 @@ alias tues='cd ~/Workspace/elsys'
 alias kolibri='cd ~/Workspace/Kolibri'
 alias cockpit='kolibri; cd kolibri-cockpit'
 
+alias sslme='sudo certbot -d lekov.me --manual --preferred-challenges dns certonly'
+
 # Homebrew
 alias brews='brew list -1'
 
