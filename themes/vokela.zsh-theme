@@ -14,7 +14,7 @@ function virtualenv_prompt_info() {
 }
 
 function rbenv_ruby_prompt {
-  if [ -f "~/.rbenv/version"]; then
+  if [ -f "~/.rbenv/version" ]; then
     local ruby_version=$(cat ~/.rbenv/version)
   else
     local ruby_version=$(ruby -v | cut -d " " -f 2)
