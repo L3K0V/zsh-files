@@ -3,8 +3,8 @@ alias work='cd ~/Workspace'
 alias elsys='cd ~/Workspace/elsys'
 alias tues='cd ~/Workspace/elsys'
 
-alias kolibri='cd ~/Workspace/Kolibri'
-alias cockpit='kolibri; cd kolibri-cockpit'
+alias kolibri='cd ~/Workspace/kolibri'
+alias cockpit='kolibri; cd cockpit'
 
 alias sslme='sudo certbot -d lekov.me --manual --preferred-challenges dns certonly'
 
@@ -29,7 +29,7 @@ alias less='less -R'
 alias please='sudo'
 
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a; brew update; brew upgrade; brew cleanup; npm i -g npm; npm update -g; sudo gem update --system; sudo gem update; apm upgrade --confirm false'
+alias update='sudo softwareupdate -i -a; brew upgrade; brew cleanup; brew cask upgrade; brew cask cleanup; npm i -g npm; npm update -g; sudo gem update --system; sudo gem update; apm upgrade --confirm false'
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
