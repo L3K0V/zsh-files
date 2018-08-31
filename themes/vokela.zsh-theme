@@ -17,7 +17,7 @@ function rbenv_ruby_prompt {
   if [ -f "~/.rbenv/version" ]; then
     local ruby_version=$(cat ~/.rbenv/version)
   else
-    local ruby_version=$(ruby -v | cut -d " " -f 2)
+    local ruby_version="system"
   fi
 
   if [ -n "$ruby_version" ]; then
