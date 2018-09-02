@@ -45,16 +45,16 @@ PROMPT='╭ %{$fg_bold[red]%}➜ %{$fg_bold[green]%}%n@%m:%{$fg[cyan]%} $(pwd_pr
 
 export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color [(y)es (n)o (a)bort (e)dit]? "
 
-ZSH_THEME_GIT_PROMPT_PREFIX=" git:‹%{$fg[red]%}"
+ZSH_THEME_GIT_PROMPT_PREFIX="\ue725 ‹%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}› %{$fg[yellow]%}✗%{$reset_color%}"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%}›"
 
-ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX="venv:‹%{$fg[red]%}"
+ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX="\ue73c ‹%{$fg[red]%}"
 ZSH_THEME_VIRTUAL_ENV_PROMPT_SUFFIX="%{$fg[blue]%}› "
 
-ZSH_THEME_RBENV_PROMPT_PREFIX="rbenv:‹%{$fg[red]%}"
+ZSH_THEME_RBENV_PROMPT_PREFIX="\ue21e ‹%{$fg[red]%}"
 ZSH_THEME_RBENV_PROMPT_SUFFIX="%{$fg[blue]%}› "
 
-ZSH_THEME_PYENV_PROMPT_PREFIX="python:‹%{$fg[red]%}"
+ZSH_THEME_PYENV_PROMPT_PREFIX="\ue73c:‹%{$fg[red]%}"
 ZSH_THEME_PYENV_PROMPT_SUFFIX="%{$fg[blue]%}› "
