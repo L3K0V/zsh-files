@@ -47,7 +47,7 @@ export SPROMPT="Correct $fg[red]%R$reset_color to $fg[green]%r$reset_color [(y)e
 
 ZSH_THEME_GIT_PROMPT_PREFIX="\ue725 ‹%{$fg[red]%}"
 ZSH_THEME_GIT_PROMPT_SUFFIX="%{$reset_color%}"
-ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}› %{$fg[yellow]%}✗%{$reset_color%}"
+ZSH_THEME_GIT_PROMPT_DIRTY="%{$fg[blue]%}› %{$fg[yellow]%}✗"
 ZSH_THEME_GIT_PROMPT_CLEAN="%{$fg[blue]%}›"
 
 ZSH_THEME_VIRTUAL_ENV_PROMPT_PREFIX="\ue73c ‹%{$fg[red]%}"
