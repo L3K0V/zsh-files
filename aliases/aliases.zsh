@@ -8,14 +8,12 @@ alias dodi='cd ~/Workspace/dodi'
 alias sslme='sudo certbot -d lekov.me --manual --preferred-challenges dns certonly'
 
 # Python
-alias pyserver='python3 -m http.server'
 alias py='python'
-alias py3='python3'
+alias pyserver='py -m http.server'
 alias pyclean='find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf'
 
 # Update all outdated packages
 alias pipup="pip freeze --local | cut -d = -f 1  | xargs pip install -U"
-alias pipu="pip install -U"
 
 alias grep='grep --color'
 
@@ -47,8 +45,6 @@ alias emptytrash="sudo rm -rfv /Volumes/*/.Trashes; sudo rm -rfv ~/.Trash; sudo 
 # Ring the terminal bell, and put a badge on Terminal.app’s Dock icon
 # (useful when executing time-consuming commands)
 alias badge="tput bel"
-
-alias zshreload="antigen reset && exec /usr/local/bin/zsh -i"
 
 # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
 alias stfu="osascript -e 'set volume output muted true'"
