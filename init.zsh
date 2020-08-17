@@ -1,7 +1,9 @@
 SOURCE=${0%/*}
 
 # Aliases
-source $SOURCE/aliases/aliases.zsh
+source $SOURCE/aliases/common.zsh
+source $SOURCE/aliases/android.zsh
+source $SOURCE/aliases/python.zsh
 
 source $SOURCE/lib/key-bindings.zsh
 

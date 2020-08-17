@@ -1,19 +1,8 @@
 alias dots='cd ~/Workspace/dotfiles'
 alias work='cd ~/Workspace'
-alias elsys='cd ~/Workspace/elsys'
-alias tues='cd ~/Workspace/elsys'
-
 alias dodi='cd ~/Workspace/dodi'
 
 alias sslme='sudo certbot -d lekov.me --manual --preferred-challenges dns certonly'
-
-# Python
-alias py='python'
-alias pyserver='py -m http.server'
-alias pyclean='find . | grep -E "(__pycache__|\.pyc|\.pyo$)" | xargs rm -rf'
-
-# Update all outdated packages
-alias pipup="pip freeze --local | cut -d = -f 1  | xargs pip install -U"
 
 alias grep='grep --color'
 
@@ -25,18 +14,10 @@ alias less='less -R'
 alias please='sudo'
 
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a; brew upgrade; brew cask upgrade; brew cleanup; npm i -g npm; npm update -g; sudo gem update --system; sudo gem update'
+alias update='sudo softwareupdate -i -a --background; brew upgrade; brew cask upgrade; brew cleanup; npm i -g npm; npm update -g; gem update --system; gem update'
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
-
-# Android assets utilities
-alias png2webp="find . -name '*.png' | parallel -eta cwebp {} -o {.}.webp"
-alias webp2png="find . -name '*.webp' | parallel -eta dwebp {} -o {.}.png"
-alias compresspngs="find . -name '*.png' -exec pngquant --ext .png --force 256 {} \;"
-alias deletepngs="find . -type f -iname \*.png -delete"
-alias deletewebps="find . -type f -iname \*.webp -delete"
-alias gradleclean="rm -rf $HOME/.gradle/caches/"
 
 # Empty the Trash on all mounted volumes and the main HDD
 # Also, clear Apple’s System Logs to improve shell startup speed
