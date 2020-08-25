@@ -6,8 +6,6 @@ alias sslme='sudo certbot -d lekov.me --manual --preferred-challenges dns certon
 
 alias grep='grep --color'
 
-alias dockerclean="docker images |grep -v REPOSITORY|awk '{print $1}'|xargs -L1 docker pull; docker rmi $(docker images -f 'dangling=true' -q) --force"
-
 alias less='less -R'
 
 # Administer like a sir
