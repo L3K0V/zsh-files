@@ -12,7 +12,7 @@ alias less='less -R'
 alias please='sudo'
 
 # Get OS X Software Updates, and update installed Ruby gems, Homebrew, npm, and their installed packages
-alias update='sudo softwareupdate -i -a --background; brew upgrade; brew cask upgrade; brew cleanup; npm i -g npm; npm update -g; gem update --system; gem update'
+alias update='sudo softwareupdate -i -a --background; brew upgrade; brew upgrade --cask; brew cleanup; npm i -g npm; npm update -g; gem update --system; gem update'
 
 # Recursively delete `.DS_Store` files
 alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
