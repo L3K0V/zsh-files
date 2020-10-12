@@ -8,7 +8,7 @@ hgrep () {
 }
 
 keyhash() {
-  keytool -exportcert -alias $2 -keystore $1 | openssl sha1 -binary | openssl base64
+  keytool -exportcert -keystore $1 -alias $2 | openssl sha1 -binary | openssl base64
 }
 
 jdk() {
