@@ -4,7 +4,7 @@ zssh() {
 }
 
 hgrep() {
-    history | egrep --color=auto --recursive "$@" | egrep --color=auto --recursive -v "hgrep $@"
+  history | egrep --color=auto --recursive "$@" | egrep --color=auto --recursive -v "hgrep $@"
 }
 
 keyhash() {
@@ -12,7 +12,7 @@ keyhash() {
 }
 
 jdk() {
-        version=$1
-        export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
-        java -version
+  version=$1
+  export JAVA_HOME=$(/usr/libexec/java_home -v"$version");
+  java -version
  }
